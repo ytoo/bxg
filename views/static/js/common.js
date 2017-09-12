@@ -31,8 +31,20 @@
           }
         }
       })
+    });
 
+  //  实现侧边栏点击给标题添加active类，显示不同样式的功能
+    $("#aside-title>li a").each(function (i,e) {
+      // 使用prop()获取href的结果是http://studyit.com/dashboard/index的形式
+      // 而使用attr()获取的结果是/dashboard/index的形式，正好a链接里写的内容
+        if($(this).attr("href") == window.location.pathname) {
+          $(e).addClass("active");
+        }
+    });
 
+    // 实现点击课程管理时出现下方的下拉菜单
+    $("#course-manage").on("click",function () {
+      $(this).children("ul").stop().slideToggle();
     });
 
 

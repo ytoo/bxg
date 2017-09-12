@@ -8,7 +8,7 @@
   </div>
   <!-- 导航菜单 -->
   <div class="navs">
-    <ul class="list-unstyled">
+    <ul class="list-unstyled" id="aside-title">
       <li>
 
         <!--注意重点一，其他两个见login.js和js.html文件里面对应的注释说明。
@@ -23,23 +23,23 @@
         即使用绝对路径，所以涉及到网页的跳转地址的都要使用/dashboard/index这种写法
         -->
         <a href="/dashboard/index">
-          <i class="fa fa-home"></i>
+          <i class="fa fa-dashboard"></i>
           仪表盘
         </a>
       </li>
       <li>
         <a href="/teacher/list">
-          <i class="fa fa-bell"></i>
+          <i class="fa fa-mortar-board"></i>
           讲师管理
         </a>
       </li>
       <li>
         <a href="/category/list">
-          <i class="fa fa-bell"></i>
+          <i class="fa fa-indent"></i>
           分类管理
         </a>
       </li>
-      <li>
+      <li id="course-manage">
         <a href="javascript:;">
           <i class="fa fa-cog"></i>
           课程管理
@@ -47,12 +47,12 @@
         </a>
         <ul class="list-unstyled">
           <li>
-            <a href="../course/course_add.html">
+            <a href="/course/add">
               课程添加
             </a>
           </li>
           <li>
-            <a href="../course/course_list.html">
+            <a href="/course/list">
               课程列表
             </a>
           </li>
