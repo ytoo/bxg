@@ -10,21 +10,33 @@
   <div class="navs">
     <ul class="list-unstyled">
       <li>
-        <a href="index" class="active">
+
+        <!--注意重点一，其他两个见login.js和js.html文件里面对应的注释说明。
+        理解本次项目中网页跳转页面地址写法、requirejs相关地址写法以及发送ajax请求数据时url地址写法的差异，及他们各自写法遵循的原则-->
+
+        <!--如果是./dashboard/index或者直接写dashboard/index是相对路径的写法，相对的是从后台服务器打开的地址的文件夹为当前目录
+        比如从后台打开studyit.com/teacher/list，此时如果点击这个页面左侧的侧边栏中的仪表盘按钮，跳转的路径会变成
+        studyit.com/teacher/dashboard/index.即./代表的当前目录是teacher,而从后台打开studyit.com/category/list时，点击仪表盘，
+        跳转的路径又变成了studyit.com/category/dashboard/index,则./代表的当前目录又变成了category.
+        由于整个网页的地址都是根据根目录（服务器设置的根目录为studyit.com,但在index.php中又将网页地址做了修改，
+        将默认的网页根目录写为studyit.com/views,此处views省略，所以后面写的网页跳转地址就可以从views下面的文件开始写起）写的，
+        即使用绝对路径，所以涉及到网页的跳转地址的都要使用/dashboard/index这种写法
+        -->
+        <a href="/dashboard/index">
           <i class="fa fa-home"></i>
           仪表盘
         </a>
       </li>
       <li>
-        <a href="../user/user_list.html">
+        <a href="/teacher/list">
           <i class="fa fa-bell"></i>
-          用户管理
+          讲师管理
         </a>
       </li>
       <li>
-        <a href="../teacher/teacher_list.html">
+        <a href="/category/list">
           <i class="fa fa-bell"></i>
-          讲师管理
+          分类管理
         </a>
       </li>
       <li>
@@ -44,43 +56,43 @@
               课程列表
             </a>
           </li>
-          <li>
-            <a href="../category/course_category.html">
-              课程分类
-            </a>
-          </li>
-          <li>
-            <a href="../course/course_topic.html">
-              课程专题
-            </a>
-          </li>
+          <!--<li>-->
+            <!--<a href="../category/list.html">-->
+              <!--课程分类-->
+            <!--</a>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<a href="../course/course_topic.html">-->
+              <!--课程专题-->
+            <!--</a>-->
+          <!--</li>-->
         </ul>
       </li>
-      <li>
-        <a href="../advert/advert_list.html">
-          <i class="fa fa-bell"></i>
-          广告管理
-        </a>
-      </li>
-      <li>
-        <a href="javascript:;">
-          <i class="fa fa-cog"></i>
-          系统设置
-          <i class="arrow fa fa-angle-right"></i>
-        </a>
-        <ul class="list-unstyled">
-          <li>
-            <a href="javascript:;">
-              网站设置
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              权限管理
-            </a>
-          </li>
-        </ul>
-      </li>
+      <!--<li>-->
+        <!--<a href="../advert/advert_list.html">-->
+          <!--<i class="fa fa-bell"></i>-->
+          <!--广告管理-->
+        <!--</a>-->
+      <!--</li>-->
+      <!--<li>-->
+        <!--<a href="javascript:;">-->
+          <!--<i class="fa fa-cog"></i>-->
+          <!--系统设置-->
+          <!--<i class="arrow fa fa-angle-right"></i>-->
+        <!--</a>-->
+        <!--<ul class="list-unstyled">-->
+          <!--<li>-->
+            <!--<a href="javascript:;">-->
+              <!--网站设置-->
+            <!--</a>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<a href="javascript:;">-->
+              <!--权限管理-->
+            <!--</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</li>-->
     </ul>
   </div>
 </div>

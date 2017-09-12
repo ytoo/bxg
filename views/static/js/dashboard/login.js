@@ -15,8 +15,16 @@ define(["jquery","cookie"],function($){
         alert("请输入密码");
         return false;
       }
+
+      // 注意重点三！！！
       // 然后根据拿到的输入数据向后台提交，使用ajax的post方式提交
-//          数据接口是http://studyit.com/api/login
+      // 原本的接口文档提供的数据接口为http://api.botue.com/login
+      // 但是在跨域请求时设置了反向代理，在浏览器同源的web服务器上用api代替了http://api.botue.com,
+      // 即原本接口请求数据的地址简化成api/login,但又由于请求是浏览器发出的，需要使用到浏览器网页的绝对地址，
+      // 即数据接口要变成是http://studyit.com/api/login，所以在写相关的ajax请求数据的url时，地址要写成/api/login这种绝对路径写法
+
+
+
       $.ajax({
         url:"/api/login",
         type:"post",

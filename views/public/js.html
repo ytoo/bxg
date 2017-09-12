@@ -1,7 +1,13 @@
+<!--注意重点！！！此处引用文件的地址也要写成绝对路径的写法，但是index.php只是对网页跳转的地址做了优化处理，
+并没有对引入文件的地址做处理，所以这里的路径地址需要从根目录studyit.com下面写起-->
 <script src="/views/assets/echarts/echarts.min.js"></script>
 <script src="/views/static/js/lib/require.js"></script>
 <script src="/views/static/js/lib/config.js"></script>
 
 <script>
+  // 注意重点二！！！
+  // 这里的地址的写法和网页跳转的地址的写法依据的规则不一样。因为这里使用了requirejs模块化工具，
+  // 所以需要根据requirejs设置的baseUrl作为所有模块查找的基础路径，这里设置的是/views/asssets，
+  // 后面涉及到requirejs的相关路径的写法都要根据这个基础路径进行查找
   require(["../static/js/common"]);
 </script>
