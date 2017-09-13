@@ -13,40 +13,7 @@
     <div class="main">
         <div class="container-fluid">
             <!-- 头部 -->
-            <div class="header">
-                <nav class="navbar navbar-custom">
-                    <div class="navbar-header">
-                        <a href="javascript:;" class="navbar-brand">
-                            <i class="fa fa-navicon"></i>
-                        </a>
-                    </div>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="javascript:;">
-                                <i class="fa fa-bell"></i>
-                                <span class="badge">8</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../dashboard/settings.html">
-                                <i class="fa fa-user"></i>
-                                个人中心
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <i class="fa fa-sign-out"></i>
-                                退出
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <i class="fa fa-tasks"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>          
-            </div>
+            <?php include "/views/public/header.html" ?>
             <!-- 讲师列表 -->
             <div class="body teacher-list">
                 <!-- 面包屑 -->
@@ -74,26 +41,16 @@
                                 <th>编号</th>
                                 <th>姓名</th>
                                 <th>昵称</th>
-                                <th>年龄</th>
+                                <th>生日</th>
                                 <th>性别</th>
                                 <th>手机号码</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>赵玉川</td>
-                                <td>布头儿</td>
-                                <td>28</td>
-                                <td>男</td>
-                                <td>15901256171</td>
-                                <td>
-                                    <a href="#teacherModal" data-toggle="modal" class="btn btn-info btn-xs">查 看</a>
-                                    <a href="add.html" class="btn btn-info btn-xs">编 辑</a>
-                                    <a href="javascript::" class="btn btn-warning btn-xs">注 销</a>
-                                </td>
-                            </tr>
+                        <tbody class="teacher_list">
+
+                        <!--利用模板动态创建-->
+
                         </tbody>
                     </table>
                 </div>
@@ -152,6 +109,34 @@
         </div>
     </div>
 
+    <!--讲师列表模板-->
+    <script type="text/template" id="teacher_list_tpl">
+        {{each result as value index}}
+
+        <tr>
+          <td>{{index+1}}</td>
+          <td>{{value.tc_name}}</td>
+          <td>{{value.tc_roster}}</td>
+          <td>{{value.tc_birthday}}</td>
+          <td>{{value.tc_gender=="0"?"男":"女"}}</td>
+          <td>{{value.tc_cellphone}}</td>
+          <td data-id="{{value.tc_id}}">
+            <a href="#teacherModal" data-toggle="modal" class="btn btn-info btn-xs">查 看</a>
+            <a href="add.html" class="btn btn-info btn-xs">编 辑</a>
+            <a href="javascript:;" id="btn-status" data-status="{{value.tc_status}}" class="btn {{value.tc_status=='0'?'btn-success':'btn-warning'}} btn-xs">{{value.tc_status=="0"?"启 用":"注 销"}}</a>
+          </td>
+        </tr>
+
+        {{/each}}
+    </script>
+
+
+    <!--利用php中的include引入通用的js文件-->
     <?php include "/views/public/js.html" ?>
+
+    <!--利用requirejs中的require引入对应的list.js文件-->
+    <script>
+      require(["../static/js/teacher/list"]);
+    </script>
 </body>
 </html>

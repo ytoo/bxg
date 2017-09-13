@@ -5,6 +5,6 @@ require.config({
   paths:{
      jquery:"./jquery/jquery",
      cookie:"./jquery-cookie/jquery.cookie",
-    template:"./artTemplate/template"
+     template:"./artTemplate/template"
   }
 });
