@@ -8,7 +8,8 @@ require.config({
      template:"./artTemplate/template",
     // bootstrap不支持模块化，需要shim配置
      bootstrap:"./bootstrap/js/bootstrap",
-     utils:"../static/js/lib/utils"
+     utils:"../static/js/lib/utils",
+     form:"./jquery-form/jquery.form"
   },
   shim:{
     bootstrap:{

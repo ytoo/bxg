@@ -24,6 +24,7 @@
         </div>
     </div>
 
+    <!-- 模板-->
     <script type="text/template" id="teacher_add_edit_tpl">
       <!-- 面包屑 -->
       <ol class="breadcrumb">
@@ -31,7 +32,7 @@
         <li class="active">{{title}}</li>
       </ol>
       <div class="teacher-add">
-        <form action="" class="form-horizontal col-xs-offset-2">
+        <form action="{{url}}" method="post" class="form-horizontal col-xs-offset-2">
           <input type="hidden" name="tc_id" value="{{tc_id}}">
           <div class="form-group">
             <label for="" class="col-xs-3 control-label">姓名</label>
@@ -39,7 +40,7 @@
               <input type="text" name="tc_name" value="{{tc_name}}" class="form-control input-sm" placeholder="讲师名称">
             </div>
           </div>
-          <!--判断是否渲染密码项内容，当添加讲师时才有这一项-->
+          <!--判断是否渲染密码项内容，当添加讲师时才有这密码项-->
           {{if !tc_id}}
           <div class="form-group">
             <label for="" class="col-xs-3 control-label">密码</label>

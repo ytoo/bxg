@@ -33,11 +33,11 @@ define(["jquery","utils","template"],function ($,utils,template) {
                 data:$("form").serialize(),
                 success:function (data) {
                   if(data.code == 200){
-                    // window.location.href = "/teacher/list";
-                    console.log($("form").serialize());
+                    window.location.href = "/teacher/list";
+                    // console.log($("form").serialize());
                   }
                 }
-              })
+              });
             });
           }
         }
