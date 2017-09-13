@@ -22,9 +22,6 @@ define(["jquery","cookie"],function($){
       // 但是在跨域请求时设置了反向代理，在浏览器同源的web服务器上用api代替了http://api.botue.com,
       // 即原本接口请求数据的地址简化成api/login,但又由于请求是浏览器发出的，需要使用到浏览器网页的绝对地址，
       // 即数据接口要变成是http://studyit.com/api/login，所以在写相关的ajax请求数据的url时，地址要写成/api/login这种绝对路径写法
-
-
-
       $.ajax({
         url:"/api/login",
         type:"post",
@@ -41,7 +38,7 @@ define(["jquery","cookie"],function($){
             $.cookie("userinfo",JSON.stringify(data.result),{expires:365,path:"/"});
 
 //                   将数据保存到根目录下的cookie中以后，在首页中也可以访问到
-            window.location.href = "index";
+            window.location.href = "/";
           }
         }
       });
