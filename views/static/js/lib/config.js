@@ -5,6 +5,14 @@ require.config({
   paths:{
      jquery:"./jquery/jquery",
      cookie:"./jquery-cookie/jquery.cookie",
-     template:"./artTemplate/template"
+     template:"./artTemplate/template",
+    // bootstrap不支持模块化，需要shim配置
+     bootstrap:"./bootstrap/js/bootstrap"
+  },
+  shim:{
+    bootstrap:{
+      // bootstrap不支持模块化，又依赖于jquery
+      deps:["jquery"]
+    }
   }
 });
