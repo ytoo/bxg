@@ -7,7 +7,8 @@ require.config({
      cookie:"./jquery-cookie/jquery.cookie",
      template:"./artTemplate/template",
     // bootstrap不支持模块化，需要shim配置
-     bootstrap:"./bootstrap/js/bootstrap"
+     bootstrap:"./bootstrap/js/bootstrap",
+     utils:"../static/js/lib/utils"
   },
   shim:{
     bootstrap:{
