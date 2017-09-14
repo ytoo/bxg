@@ -38,23 +38,30 @@
           <div class="form-group">
             <label for="" class="col-xs-3 control-label">姓名</label>
             <div class="col-xs-4">
-              <input type="text" name="tc_name" value="{{tc_name}}" class="form-control input-sm" placeholder="讲师名称">
+              <input type="text" name="tc_name" value="{{tc_name}}" data-required data-trim data-description="name" data-describedby="msgforname" class="form-control input-sm" placeholder="讲师名称">
             </div>
+            <span id="msgforname" class="col-xs-5 help-block"></span>
           </div>
           <!--判断是否渲染密码项内容，当添加讲师时才有这密码项-->
           {{if !tc_id}}
           <div class="form-group">
             <label for="" class="col-xs-3 control-label">密码</label>
             <div class="col-xs-4">
-              <input type="password" name="tc_pass"  class="form-control input-sm">
+              <!--data-required是该表单元素必填，不能为空，data-trim表示修改表单内容两边的空格后进行非空验证，
+              data-pattern是进行正则验证，data-description设置的值需要在validate方法中的description设置项中进行设置该行需要被验证项的说明，
+              data-describedby设置的值需要在下面的结构中通过id绑定这个值，然后将description里面验证未通过的解释说明显示出来-->
+              <input type="password" name="tc_pass" value="{{tc_pass}}" class="form-control input-sm" data-required data-trim data-pattern="^[a-zA-Z0-9]{6,10}$" data-description="password" data-describedby="msgforpassword">
             </div>
+            <!--这个span里面的id值需要绑定上面的data-describedby设置的值，并显示验证未通过设置的提示信息-->
+            <span id="msgforpassword" class="col-xs-5 help-block"></span>
           </div>
           {{/if}}
           <div class="form-group">
             <label for="" class="col-xs-3 control-label">入职时间</label>
             <div class="col-xs-4">
-              <input type="text" name="tc_join_date" value="{{tc_join_date}}" class="form-control input-sm">
+              <input type="text" name="tc_join_date" value="{{tc_join_date}}" class="form-control input-sm" data-required data-description="date" data-describedby="msgfordate">
             </div>
+            <span id="msgfordate" class="col-xs-5 help-block"></span>
           </div>
           <div class="form-group">
             <label for="" class="col-xs-3 control-label">类型</label>

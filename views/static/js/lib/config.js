@@ -12,7 +12,8 @@ require.config({
      form:"./jquery-form/jquery.form",
      nprogress:"./nprogress/nprogress",
     datepicker:"./bootstrap-datepicker/js/bootstrap-datepicker",
-    datepickerCN:"./bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min"
+    datepickerCN:"./bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min",
+    validate:"./jquery-validate/jquery-validate"
   },
   shim:{
     bootstrap:{
@@ -20,6 +21,9 @@ require.config({
       deps:["jquery"]
     },
     datepickerCN:{
+      deps:["jquery"]
+    },
+    validate:{
       deps:["jquery"]
     }
   }
