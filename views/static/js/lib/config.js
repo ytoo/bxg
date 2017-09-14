@@ -9,7 +9,8 @@ require.config({
     // bootstrap不支持模块化，需要shim配置
      bootstrap:"./bootstrap/js/bootstrap",
      utils:"../static/js/lib/utils",
-     form:"./jquery-form/jquery.form"
+     form:"./jquery-form/jquery.form",
+     nprogress:"./nprogress/nprogress"
   },
   shim:{
     bootstrap:{

@@ -2,11 +2,15 @@
 
  // 因为登录其他所有页面时，都要进行登录检测，所以将这个模块放在common中，
  // 然后再在js.html中用require引入commonjs，其他所有的文件用script引入js.html,这样每个文件都可以进行登录检测了
-	define(["jquery","template","cookie"],function ($,template) {
+	define(["jquery","template","nprogress","cookie"],function ($,template,NProgress) {
     // 有一个漏洞，就是如果不对用户的登录状态做检测，用户可以直接登录首页，这是不对的
 //      因为用户只要登录过后后台会给浏览器返回一个PHPSESSID,保存在cookie中，所以可以根据这个值是否存在，来判断用户是否已经登录过了、
 
+    // 这里设置页面加载之前执行开始的进度条效果
+    NProgress.start();
     $(function () {
+      // 由于jQuery的入口函数是在页面结构加载完之后执行，所以可以再设置一个进度条结束
+      NProgress.done();
       // 当不在登录界面时，才执行内部的代码
       if(location.pathname != "/dashboard/login") {
         if(!$.cookie("PHPSESSID")){
@@ -48,6 +52,19 @@
         $(this).children("ul").stop().slideToggle();
       });
     });
+
+    // 利用 ajax的全局方法，在所有的ajax发送开始时设置一个回调函数，执行进度条nprogress的start()方法
+    $(document).ajaxStart(function () {
+      NProgress.start();
+    });
+
+    // 利用 ajax的全局方法，在所有的ajax发送结束时设置一个回调函数，执行进度条nprogress的done()方法
+    $(document).ajaxStop(function () {
+      NProgress.done();
+    });
+
+
+
 
 
 
