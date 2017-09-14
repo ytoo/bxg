@@ -1,4 +1,4 @@
-define(["jquery","utils","template","form"],function ($,utils,template) {
+define(["jquery","utils","template","form","datepicker","datepickerCN"],function ($,utils,template) {
   $(function () {
 
     // 使用jquery-form插件完成表单提交的功能
@@ -22,7 +22,7 @@ define(["jquery","utils","template","form"],function ($,utils,template) {
             data.result.btnText = "保存";
             data.result.url = "/api/teacher/update";
             // 根据数据结合模板创建结构渲染到页面
-            $(".teacher,.body").html(template("teacher_add_edit_tpl",data.result));
+            renderData(data.result);
 
             // 点击事件利用表单提交，使用事件委托
 
@@ -38,11 +38,28 @@ define(["jquery","utils","template","form"],function ($,utils,template) {
         btnText:"添加",
         url:"/api/teacher/add"
       };
-      $(".teacher,.body").html(template("teacher_add_edit_tpl",obj));
+      renderData(obj);
 
       // 点击事件利用表单提交，使用事件委托
 
     }
+
+    // 根据数据结合模板创建结构渲染到页面的函数封装
+    function renderData(data) {
+      $(".teacher,.body").html(template("teacher_add_edit_tpl",data));
+
+      // 创建表单以后，在使用datepicker插件的方法设置入职时间
+      $("input[name='tc_join_date']").datepicker({
+        format:"yyyy-mm-dd",
+        autoclose:true,
+        language:"zh-CN",
+        startDate:"-3d",
+        endDate:"+7d"
+      });
+
+
+    }
+
 
     // 将表单提交的事件委托到父元素上，这样就可以将上面判断中公共的表单提交方法进行提取
     $(".body,.teacher").on("submit","form",function () {

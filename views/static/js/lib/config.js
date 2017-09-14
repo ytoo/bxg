@@ -10,11 +10,16 @@ require.config({
      bootstrap:"./bootstrap/js/bootstrap",
      utils:"../static/js/lib/utils",
      form:"./jquery-form/jquery.form",
-     nprogress:"./nprogress/nprogress"
+     nprogress:"./nprogress/nprogress",
+    datepicker:"./bootstrap-datepicker/js/bootstrap-datepicker",
+    datepickerCN:"./bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min"
   },
   shim:{
     bootstrap:{
       // bootstrap不支持模块化，又依赖于jquery
+      deps:["jquery"]
+    },
+    datepickerCN:{
       deps:["jquery"]
     }
   }
